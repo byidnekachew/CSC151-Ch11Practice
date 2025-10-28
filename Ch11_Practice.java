@@ -1,6 +1,6 @@
 /*
- * Name: 
- * Purpose: 
+ * Name: Flight Itinerary Tracker
+ * Purpose: To track a set of flights and calculate the time it takes to get from one destination to another
  * Programmer: Biruk Yidnekachew
  * Date: 28 October 2025
  */
@@ -37,14 +37,12 @@ class Flight {
     private GregorianCalendar departureTime; 
     private GregorianCalendar arrivalTime; 
 
-    // Constructor
     public Flight(String newFlightNo, GregorianCalendar newDepartureTime, GregorianCalendar newArrivalTime) {
         this.flightNo = newFlightNo;
         this.departureTime = newDepartureTime;
         this.arrivalTime = newArrivalTime;
     }
 
-    // Getters
     public String getFlightNo(){
         return this.flightNo;
     }
@@ -55,7 +53,6 @@ class Flight {
         return this.arrivalTime;
     }
 
-    // Setters
     public void setDepartureTime(GregorianCalendar newDepartureTime){
         this.departureTime = newDepartureTime;
     }
@@ -63,13 +60,7 @@ class Flight {
         this.arrivalTime = newArrivalTime;
     }
 
-    // getFlightTime()
     public long getFlightTime(){
-        /*
-        long departureMillis = departureTime.getTimeInMillis();
-        long arrivalMillis = arrivalTime.getTimeInMillis();
-        long durationMillis = arrivalMillis - departureMillis;
-        */
         return (arrivalTime.getTimeInMillis() - departureTime.getTimeInMillis()) / (60 * 1000);
     }
 }
@@ -77,12 +68,10 @@ class Flight {
 class Itinerary {
     private List<Flight> flightsItinerary;
 
-    // Constructor
     public Itinerary(List<Flight> newFlightsItinerary){
         this.flightsItinerary = newFlightsItinerary;
     }
 
-    // getTotalTime()
     public long getTotalTravelTime(){
         return ((flightsItinerary.get(flightsItinerary.size() - 1).getArrivalTime().getTimeInMillis()) - (flightsItinerary.get(0).getDepartureTime().getTimeInMillis())) / (60 * 1000);
     }
